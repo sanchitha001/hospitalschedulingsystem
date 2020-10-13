@@ -1,3 +1,29 @@
 #This is the main build for our hospital scheduling system. For more details, please refer to the README file.
 #Contributors : Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G, Shraavya B K
 
+def appointment_details_primaryinput():
+    Name = input("Full Name:")
+    
+    Contact_number = input("Contact Number:")
+    
+    choices = {
+        1 : 'General Consultancy',
+        2 : 'Blood Test/Vaccination',
+        3 : 'ECG test',
+        4 : 'Routine Checkup',
+        5 : 'Minor surgery'
+        6 : 'Major surgery',
+        7 : 'X Ray'
+        8 : 'Ultrasound'
+        
+    }
+    print("1. Consultancy\n2. Blood Test\n3. ECG Test\n4. Minor surgery\n5. Routine Checkup")
+    c=input("Enter choice (1-5):")
+    c=int(c)
+    Type = choices[c]
+    
+    print("Opt in for auto-rescheduling? Your appointment will be moved to an earlier time slot if one opens up. You will be notified of the reschedule at your contact number.")
+    reschedule=input("(Yes/No)")
+    
+    #Based on choice, appointment goes to either Family physician, Radiologist, or General Surgeon's schedule.
+
