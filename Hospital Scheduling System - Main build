@@ -1,29 +1,59 @@
 #This is the main build for our hospital scheduling system. For more details, please refer to the README file.
 #Contributors : Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G, Shraavya B K
 
-def appointment_details_primaryinput():
-    Name = input("Full Name:")
-    
-    Contact_number = input("Contact Number:")
-    
-    choices = {
-        1 : 'General Consultancy',
-        2 : 'Blood Test/Vaccination',
-        3 : 'ECG test',
-        4 : 'Routine Checkup',
-        5 : 'Minor surgery'
-        6 : 'Major surgery',
-        7 : 'X Ray'
-        8 : 'Ultrasound'
-        
-    }
-    print("1. Consultancy\n2. Blood Test\n3. ECG Test\n4. Minor surgery\n5. Routine Checkup")
-    c=input("Enter choice (1-5):")
-    c=int(c)
-    Type = choices[c]
-    
-    print("Opt in for auto-rescheduling? Your appointment will be moved to an earlier time slot if one opens up. You will be notified of the reschedule at your contact number.")
-    reschedule=input("(Yes/No)")
-    
-    #Based on choice, appointment goes to either Family physician, Radiologist, or General Surgeon's schedule.
+#Linked list creation. The following section of code creates the linked list class to store appointment details, as well as initialises the schedules of three doctors as linked lists with initially, all empty slots i.e. No appointments
+class node:
+    def __init__(self, timeslot=None, Name = None, Contact_number = None, Type = None, Reschedule = None):
+        self.timeslot=timeslot
+        self.Name = Name
+        self.Contact_number = Contact_number
+        self.Type = Type
+        self.Reschedule = Reschedule
+        self.next = None
 
+class linked_list:
+    def __init__(self):
+        self.head = node()
+    
+    def append(self, timeslot, Name, Contact_number, Type, Reschedule):
+        new_node = node(timeslot, Name,Contact_number,Type,Reschedule)
+        cur = self.head
+        while cur.next != None:
+            cur = cur.next
+        cur.next = new_node
+    
+    def display(self):
+        Appointments = []
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            aptmnt = (cur_node.timeslot, cur_node.Name, cur_node.Contact_number, cur_node.Type, cur_node.Reschedule)
+            Appointments.append(aptmnt)
+        print(Appointments)
+    
+    def view(self, timeslot):
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node=cur_node.next
+            if cur_node.timeslot == timeslot:
+                return (cur_node.timeslot, cur_node.Name, cur_node.Contact_number, cur_node.Type, cur_node.Reschedule)
+    
+    def insert_new_appointment(self, timeslot, Name, Contact_number, Type, Reschedule):
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node=cur_node.next
+            if cur_node.timeslot == timeslot:
+                cur_node.Name = Name
+                cur_node.Contact_number = Contact_number
+                cur_node.Type = Type
+                cur_node.Reschedule = Reschedule
+
+            
+physician_schedule=linked_list()
+gensurgeon_schedule=linked_list()
+radiologist_schedule=linked_list()
+
+for i in range(24):
+    physician_schedule.append(i+1, None, None, None, None)
+    gensurgeon_schedule.append(i+1, None, None, None, None)
+    radiologist_schedule.append(i+1, None, None, None, None)
