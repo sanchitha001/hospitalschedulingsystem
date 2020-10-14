@@ -57,3 +57,110 @@ for i in range(24):
     physician_schedule.append(i+1, None, None, None, None)
     gensurgeon_schedule.append(i+1, None, None, None, None)
     radiologist_schedule.append(i+1, None, None, None, None)
+
+#---------------------------------------------------------------------------------------
+#Lists to check for time slot availability:
+physician_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
+gensurgeon_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
+radiologist_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
+
+#Appointment creation function 1
+def appointment_details_primaryinput():
+    Name = input("Full Name:")
+    
+    Contact_number = input("Contact Number:")
+    
+    choices = {
+        1 : 'General Consultancy',
+        2 : 'Blood Test/Vaccination',
+        3 : 'ECG test',
+        4 : 'Routine Checkup',
+        5 : 'Minor surgery',
+        6 : 'Major surgery',
+        7 : 'X Ray',
+        8 : 'Ultrasound'
+        
+    }
+    print("1. General Consultancy\n2. Blood Test/Vaccination \n3. ECG Test\n4. Routine Checkup\n5. Minor Surgery\n6.Major surgery \n7.X Ray \n8.Ultrasound")
+    c=input("Enter choice (1-8):")
+    c=int(c)
+    Type = choices[c]
+    
+    
+    if c in [1,2,3,4]:
+        print("The currently available time slots are as follows:")
+        if c in [1,2]:
+            for i in range(24):
+                if physician_timeslot_availability[i]!=0:
+                    print(i+1,'.',physician_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            physician_timeslot_availability[timechoice-1]=0
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            physician_schedule.insert_new_appointment(timechoice, Name, Contact_number, Type, reschedule)
+        elif c in [3,4]:
+            for i in range(22):
+                if physician_timeslot_availability[i]!=0 and physician_timeslot_availability[i+1]!=0 :
+                    print(i+1,'.',physician_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            physician_timeslot_availability[timechoice-1]=0
+            gensurgeon_timeslot_availability[timechoice]=0
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            physician_schedule.insert_new_appointment(timechoice, Name, Contact_number, Type, reschedule)
+            physician_schedule.insert_new_appointment(timechoice+1, Name, Contact_number, Type, reschedule)
+        
+    elif c in [5,6]:
+        print("The currently available time slots are as follows:")
+        if c == 5:
+            for i in range(23):
+                if gensurgeon_timeslot_availability[i]!=0 and gensurgeon_timeslot_availability[i+1]!=0:
+                    print(i+1,'.',gensurgeon_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            gensurgeon_timeslot_availability[timechoice-1]=0
+            gensurgeon_timeslot_availability[timechoice]=0
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            gensurgeon_schedule.insert_new_appointment(timechoice, Name, Contact_number, Type, reschedule)
+            gensurgeon_schedule.insert_new_appointment(timechoice+1, Name, Contact_number, Type, reschedule)
+        if c == 6:
+            for i in range(18):
+                if gensurgeon_timeslot_availability[i]!=0 and gensurgeon_timeslot_availability[i+1]!=0 and gensurgeon_timeslot_availability[i+2]!=0 and gensurgeon_timeslot_availability[i+3]!=0 and gensurgeon_timeslot_availability[i+4]!=0 and gensurgeon_timeslot_availability[i+5]!=0:
+                    print(i+1,'.',gensurgeon_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            for i in range(6):
+                gensurgeon_timeslot_availability[timechoice+i]=0
+                gensurgeon_schedule.insert_new_appointment(timechoice+i, Name, Contact_number, Type, reschedule)
+            
+    elif c in [7,8]:
+        print("The currently available time slots are as follows:")
+        if c == 7:
+            for i in range(24):
+                if radiologist_timeslot_availability[i]!=0:
+                    print(i+1,'.',radiologist_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            radiologist_timeslot_availability[timechoice-1]=0
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            radiologist_schedule.insert_new_appointment(timechoice, Name, Contact_number, Type, reschedule)
+        elif c == 8:
+            for i in range(23):
+                if radiologist_timeslot_availability[i]!=0 and radiologist_timeslot_availability[i+1]!=0:
+                    print(i+1,'.',radiologist_timeslot_availability[i])
+            timechoice = input("Please enter preferred time (Numbers 1-24)")
+            timechoice = int(timechoice)
+            radiologist_timeslot_availability[timechoice-1]=0
+            radiologist_timeslot_availability[timechoice]=0
+            print("Opt in for auto-rescheduling when possible? (You will be given an earlier appointment should one open up, but failure to show up will result in you needing to make another appointment with us on a later date)")
+            reschedule = input("Type yes or no")
+            radiologist_schedule.insert_new_appointment(timechoice, Name, Contact_number, Type, reschedule)
+            radiologist_schedule.insert_new_appointment(timechoice+1, Name, Contact_number, Type, reschedule)
+    
+    #Based on choice, appointment goes to either Family physician, Radiologist, or General Surgeon's schedule.
