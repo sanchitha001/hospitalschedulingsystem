@@ -196,23 +196,23 @@ def appointment_details_primaryinput():
 # For the administrator to view each of the doctors' schedules for the day in tabular form.
     
 def phy():
-	print("\n\tWelcome, Admin.\n\n")
-	import pandas as pd 
-	dfphy = pd.DataFrame(physician_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-	dfphy.index = [physician_timeslot_availability]
-	print("\n\t\tPhysician's schedule:")
-	return dfphy
+    import pandas as pd 
+    dfphy = pd.DataFrame(physician_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+    dfphy.index = [physician_timeslot_availability]
+    print("\n\tWelcome, Admin.\n\n")
+    print("\n\t\tPhysician's schedule:")
+    return dfphy
 def gen():
-    print("\n\tWelcome, Admin.\n\n")
-	import pandas as pd 
-	dfgen = pd.DataFrame(gensurgeon_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-	dfgen.index = [gensurgeon_timeslot_availability]
-	print("\n\t\tSurgeons's schedule:")
-	return dfgen
+    import pandas as pd
+    dfgen = pd.DataFrame(gensurgeon_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+    dfgen.index = [gensurgeon_timeslot_availability]
+    print("\n\nWelcome, Admin.\n\n")
+    print("\n\t\tSurgeons's schedule:")
+    return dfgen
 def rad():
-    print("\n\tWelcome, Admin.\n\n")
-	import pandas as pd 
-	dfrad = pd.DataFrame(radiologist_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-	dfrad.index = [radiologist_timeslot_availability]
-	print("\n\t\tSurgeons's schedule:")
-	return dfrad
+    import pandas as pd
+    dfrad = pd.DataFrame(radiologist_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+    dfrad.index = [radiologist_timeslot_availability]
+    print("\n\nWelcome, Admin\n\n")
+    print("\n\t\tRadiologists's schedule:")
+    return dfrad
