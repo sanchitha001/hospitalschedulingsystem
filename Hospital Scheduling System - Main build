@@ -27,9 +27,9 @@ class linked_list:
         cur_node = self.head
         while cur_node.next != None:
             cur_node = cur_node.next
-            aptmnt = (cur_node.timeslot, cur_node.Name, cur_node.Contact_number, cur_node.Type, cur_node.Reschedule)
+            aptmnt = [cur_node.timeslot, cur_node.Name, cur_node.Contact_number, cur_node.Type, cur_node.Reschedule]
             Appointments.append(aptmnt)
-        print(Appointments)
+        return Appointments
     
     def view(self, timeslot):
         cur_node = self.head
@@ -74,9 +74,9 @@ for i in range(24):
 
 #---------------------------------------------------------------------------------------
 #Lists to check for time slot availability:
-physician_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
-gensurgeon_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
-radiologist_timeslot_availability = [900,930,1000,1030,1100,1130,1200,1230,1300,1330,1400,1430,1500,1530,1600,1630,1700,1730,1800,1830,1900,1930,2000,2030]
+physician_timeslot_availability = ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30"]
+gensurgeon_timeslot_availability = ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30"]
+radiologist_timeslot_availability = ["9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00","18:30","19:00","19:30","20:00","20:30"]
 
 #Appointment creation function 1
 def appointment_details_primaryinput():
@@ -192,3 +192,27 @@ def appointment_details_primaryinput():
             radiologist_schedule.appointmentconfirmed_acknowledgement(timechoice,time)
     
     #Based on choice, appointment goes to either Family physician, Radiologist, or General Surgeon's schedule.
+#---------------------------------------------------------------------------
+# For the administrator to view each of the doctors' schedules for the day in tabular form.
+    
+def phy():
+	print("\n\tWelcome, Admin.\n\n")
+	import pandas as pd 
+	dfphy = pd.DataFrame(physician_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+	dfphy.index = [physician_timeslot_availability]
+	print("\n\t\tPhysician's schedule:")
+	return dfphy
+def gen():
+    print("\n\tWelcome, Admin.\n\n")
+	import pandas as pd 
+	dfgen = pd.DataFrame(gensurgeon_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+	dfgen.index = [gensurgeon_timeslot_availability]
+	print("\n\t\tSurgeons's schedule:")
+	return dfgen
+def rad():
+    print("\n\tWelcome, Admin.\n\n")
+	import pandas as pd 
+	dfrad = pd.DataFrame(radiologist_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
+	dfrad.index = [radiologist_timeslot_availability]
+	print("\n\t\tSurgeons's schedule:")
+	return dfrad
