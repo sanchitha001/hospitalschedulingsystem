@@ -194,25 +194,44 @@ def appointment_details_primaryinput():
     #Based on choice, appointment goes to either Family physician, Radiologist, or General Surgeon's schedule.
 #---------------------------------------------------------------------------
 # For the administrator to view each of the doctors' schedules for the day in tabular form.
-    
+
 def phy():
     import pandas as pd 
-    dfphy = pd.DataFrame(physician_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-    dfphy.index = [physician_timeslot_availability]
-    print("\n\tWelcome, Admin.\n\n")
+    dfphy = pd.DataFrame(physician_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'], index=['9:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30'])
     print("\n\t\tPhysician's schedule:")
     return dfphy
 def gen():
     import pandas as pd
-    dfgen = pd.DataFrame(gensurgeon_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-    dfgen.index = [gensurgeon_timeslot_availability]
-    print("\n\nWelcome, Admin.\n\n")
+    dfgen = pd.DataFrame(gensurgeon_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'], index=['9:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30'])
     print("\n\t\tSurgeons's schedule:")
     return dfgen
 def rad():
     import pandas as pd
-    dfrad = pd.DataFrame(radiologist_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'])
-    dfrad.index = [radiologist_timeslot_availability]
-    print("\n\nWelcome, Admin\n\n")
+    dfrad = pd.DataFrame(radiologist_schedule.display(),columns = ['Timeslot number','Name','Contact Number','Appointment type','Rescheduling?'], index=['9:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30'])
     print("\n\t\tRadiologists's schedule:")
     return dfrad
+    
+def enter():    
+    choose=input("Please choose which doctor's schedule you would like to view.\n1.Physician = P\n2.General Surgeon = G\n3.Radiologist = R\n")
+    choose=choose.upper()
+    if choose=='P':
+        phy()
+    elif choose=='G':
+        gen()
+    elif choose=='R':
+        rad()
+    else:
+        print("\nInvalid input. Please try again.\n")
+        enter()
+
+def admin():
+    user="hospital"
+    pas="doctor123"
+    username=input("Enter username:")
+    password=input("Enter password:")
+    if username == user and password == pas:
+        print("\n\nWelcome, Admin.\n")
+        enter()
+    else:
+        print("\nIncorrect username or password entered. Please try again.\n")
+        admin()
