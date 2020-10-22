@@ -1,5 +1,7 @@
 # hospitalschedulingsystem
 
+Contributors : Akash Bagchi   Akshaya Nadathur    Riya Mary Joseph    Sanchitha N G   Shraavya B K
+
 Aim:
 To create a hospital appointment scheduling system that can take user requests to create and manage their doctor’s appointments, with the following functionality:
 To create new appointments that will prompt the code to look for the next available time slot to accommodate the patient in, considering the nature of the appointment.
