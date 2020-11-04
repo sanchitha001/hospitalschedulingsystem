@@ -1,7 +1,7 @@
 # Hospital Schedule Management System
 ###### v1.0-beta.1
 
-_Developed by **Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G and Shraavta B K** for the Computational Thinking with Python Mini Project at Dayananda Sagar University, Kudlu Gate_
+_Developed by **Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G and Shraavya B K** for the Computational Thinking with Python Mini Project at Dayananda Sagar University, Kudlu Gate_
 
 This is a schedule management system designed for modern hospitals to use as a next-day appointment booking and management application, assigning appointments to patients based on their preferences as well as allowing for cancellation and dynamic(automatic) rescheduling.
 Our code employs the implementation of linked lists using classes and methods in python, as well as several python3 modules such as pandas and tkinter to create a fully functioning and intuitive scheduling system with rudimentary GUI.
