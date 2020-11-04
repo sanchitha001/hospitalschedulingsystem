@@ -1,4 +1,5 @@
 # Hospital Schedule Management System
+###### v1.0-beta.1
 
 _Developed by **Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G and Shraavta B K** for the Computational Thinking with Python Mini Project at Dayananda Sagar University, Kudlu Gate_
 
@@ -42,5 +43,9 @@ Further, the method calls the "reschedule_appointment" method when working is co
 
 The admin view function enables any logistical hospital staff with the (customizable by hospital) username and password to view the current state of all staff members' schedules.
 
+## Working - Frontend
+
+The front - end for our program is made possible using the TKinter module, using which we created a rudimentary GUI with buttons for all primary user functions. The front - end code (and thus the scheduling system as a whole) runs until the GUI is closed. This system is designed to always be open on a hospital computer, and refreshed at the start of every working day.
+We are currently looking into deployment as a web-application.
 
 ###### [View on github](https://github.com/Python-mini-project/hospitalschedulingsystem)
