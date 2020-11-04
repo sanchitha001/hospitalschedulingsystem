@@ -180,4 +180,42 @@ window.title("Hospital Schedule Management System")
 
 We are currently looking into deployment as a web-application.
 
+
+
+## Scope for Integration of APIs:
+
+**Whatsapp API from _twilio_ :**
+
+Using twilio.com 's WhatsApp API, tested out the scope of integration of Whatsapp message notifications for booking/reschedule acknowledgements.
+
+Twilio's Whatsapp API allows for the creation of basic conversational bots. By setting up an account using one's mobile number, twilio provides the user with some ready-to-test templates for functions such as appointment reminders
+
+<img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/whatsapp.PNG" style="zoom: 67%;" />
+
+<img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/IMG_20201104_222050.jpg" style="zoom: 25%;" />
+
+- On pip installing flask and twilio, by creating a Flask web app to run on a local server, we can deploy a basic script to take in an incoming message, and relay it back to the user as confirmation that the API is working. 
+
+  <img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/whatsapp1.PNG" style="zoom:50%;" />
+
+- Since a local server cannot be used as a callback URL for the API, we deploy the same using ngrock cloud services to tunnel from a public URL to our local application.
+
+  <img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/whatsapp2.PNG" style="zoom:50%;" />
+
+  The  script template is as shown
+
+  <img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/whatsapp3.PNG" style="zoom:50%;" />
+
+  Once deployed on a public URL, and set as the Callback URL for our API, we can test the working by sending any message to the bot.
+
+<img src="https://github.com/Python-mini-project/Hospital-Schedule-Management-System/blob/main/docs/IMG_20201104_222100.jpg" style="zoom:25%;" />
+
+To fully implement the same into our program, one could further deploy the application on a cloud server service such as *Heroku* to enable the functioning of the API without a Flask and ngrok application running on the host computer. 
+
+Linking the scripts to the back-end of our hospital schedule management system could enable the system to send automated confirmation messages to patients' given contact numbers via Whatsapp in the event of appointment booking, cancellation or rescheduling.
+
+While the full deployment of such a feature using the Whatsapp API from _Twilio_ may not be possible in the given timeframe, the scope for user-friendly functionality is sizeable. By sending out automated confirmation/acknowledgement/reminder messages, the efficiency and intuitiveness of the automated schedule management system would be greatly improved; Reducing risk of patients being unaware or forgetful of their appointment times, especially when automatically rescheduled.
+
+
+
 ###### [View on github](https://github.com/Python-mini-project/hospitalschedulingsystem)
