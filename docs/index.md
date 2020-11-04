@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+# Hospital Schedule Management System
 
-You can use the [editor on GitHub](https://github.com/Python-mini-project/hospitalschedulingsystem/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+_Developed by **Akash Bagchi, Akshaya Nadathur, Riya Mary Joseph, Sanchitha N G and Shraavta B K** for the Computational Thinking with Python Mini Project at Dayananda Sagar University, Kudlu Gate_
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This is a schedule management system designed for modern hospitals to use as a next-day appointment booking and management application, assigning appointments to patients based on their preferences as well as allowing for cancellation and dynamic(automatic) rescheduling.
+Our code employs the implementation of linked lists using classes and methods in python, as well as several python3 modules such as pandas and tkinter to create a fully functioning and intuitive scheduling system with rudimentary GUI.
 
-### Markdown
+## Functionality:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+1. Appointment Creation
+    - Different Schedules for different doctors (eg: X-Rays are handled by the radiologist whereas minor surgeries are handled by the General surgeon.)
+    - Mechanisms in place to prevent overwriting of existing appointments by new ones
+    - User is given the choice to opt-in for automatic rescheduling
+    - Appointment confirmed acknowledgement messages to verify succesful booking
+2. Appointment Viewing
+    - Any user can review their appointment details simply by entering their contact information as a search parameter.
+3. Appointment Cancellation
+    - User can cancel their appointment by entering their details.
+    - Automatic Rescheduling: Upon cancellation, the schedule is scanned for following appointments that have opted-in for automatic rescheduling. Should such an appointment be encountered that can be accomodated in the number of slots freed by the cancellation, it is automatically moved to the earlier time, and the old times are made available for bookings once more.
+4. Admin View
+    - Enabled mechanism for hospital staff to access password-protected view of all staff member's schedules, to ensure there is no confusion, and to facilitate manual cancellation by hospital staff in case of disparity or errors (negligible probability).
 
-```markdown
-Syntax highlighted code block
+## Working - Backend
 
-# Header 1
-## Header 2
-### Header 3
+### The Schedule
 
-- Bulleted
-- List
+Our schedule for this system considers a 12-hour working day in a hospital, comprised of 24 half-hour time slots. The Class _node_ is used to create the basic data structure for any one appointment slot, containing the patient's name, contact information, appointment details, timeslot (position in schedule) and link to the next node. The class **linked_list** is then used to envelop several of these _nodes_ in a list structure which when initialized, forms the schedule
 
-1. Numbered
-2. List
+### Appointment Creation
 
-**Bold** and _Italic_ and `Code` text
+The "appointment_details_primaryinput" function takes in the user's Name, Contact information and desired appointment type. Based on type, the user is shown all the unoccupied timeslots of the appropriate doctor's schedule, accounting also for the size of their desired appointment type, to ensure that an appointment doesn't accidentally overwrite another appointment slot, or try to exceed the schedule's total size of 24 slots.
+The user is also asked for their automatic rescheduling preferences, which will determine if their appointment is dynamically moved to earlier times that can accomodate them, should any open up.
 
-[Link](url) and ![Image](src)
-```
+The script then uses the "insert_new_appointment" and "appointmentconfirmed_acknowledge" methods to update the respective doctor's schedule with the new appointment.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Appointment Cancellation
 
-### Jekyll Themes
+The "appointment_deletion_input" function takes all relevant information from the user and calls the "delete_appointment" method to scan through the appropriate schedule for the right slots, and empty the same. The method then makes all the timeslots previously occupied by said appointment available for booking again, to ensure that time is not wasted in the working day.
+Further, the method calls the "reschedule_appointment" method when working is complete, to dynamically reschedule any following appointments wishing for earlier times, granted that it can be accomodated in the newly emptied slots.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Python-mini-project/hospitalschedulingsystem/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Admin View
 
-### Support or Contact
+The admin view function enables any logistical hospital staff with the (customizable by hospital) username and password to view the current state of all staff members' schedules.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+###### [View on github](https://github.com/Python-mini-project/hospitalschedulingsystem)
