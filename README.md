@@ -2,7 +2,7 @@
 
 _Contributors : Akash Bagchi   Akshaya Nadathur    Riya Mary Joseph    Sanchitha N G   Shraavya B K_
 ###### v1.0-beta.1
-[Documentation](https://python-mini-project.github.io/hospitalschedulingsystem/)
+[Documentation](https://python-mini-project.github.io/Hospital-Schedule-Management-System/)
 
 
 Aim:
