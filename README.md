@@ -1,6 +1,9 @@
 # hospitalschedulingsystem
 
-Contributors : Akash Bagchi   Akshaya Nadathur    Riya Mary Joseph    Sanchitha N G   Shraavya B K
+_Contributors : Akash Bagchi   Akshaya Nadathur    Riya Mary Joseph    Sanchitha N G   Shraavya B K_
+###### v1.0-beta.1
+[Documentation](https://python-mini-project.github.io/hospitalschedulingsystem/)
+
 
 Aim:
 To create a hospital appointment scheduling system that can take user requests to create and manage their doctor’s appointments, with the following functionality:
